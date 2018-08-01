@@ -140,13 +140,15 @@ public class EmailForm extends javax.swing.JFrame {
         String userPassword = txtPassword.getText();
         int departmentValue = comboDepartment.getSelectedIndex();
         
-        
+        System.out.println(departmentValue);
         
         //create email with name from text boxes
-        Email em1 = new Email(userFirstName, userLastName);
+        Email em1 = new Email(userFirstName, userLastName, departmentValue);
+        
         
         em1.setPassword(userPassword);
-        em1.setDepartment(departmentValue);
+        
+        
         //create alt email with altemail if it isn't empty
         if(txtAltEmail.getText() == ""){
             System.out.println("No Alt Email");
