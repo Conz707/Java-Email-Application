@@ -18,8 +18,9 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private String alternateEmail;
+    private String userEmail;
 
     
     //Constructor
@@ -27,12 +28,9 @@ public class Email {
     public Email(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("User: " + this.firstName + " " + this.lastName);
         
-        
-        //getDepartment
+        //setDepartment
         this.department = setDepartment();
-        System.out.println("Select Department Number: " + this.department);
         
         //create and assign randomPassword
         this.password = randomPassword(8);
@@ -41,8 +39,8 @@ public class Email {
         //Create the email
         //NOTE - Email should add a number after lastName if user already exists.
         //Email needs to remove the "." after department if the user department = 0
-        String userEmail = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + ".thecompany.co.uk";
-        System.out.println("Email created: " + userEmail);
+        userEmail = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + ".thecompany.co.uk";
+
         }
     
     //Methods
@@ -85,11 +83,43 @@ public class Email {
         }
         return new String (password);
     }
-    //Set mailbox capacity
     
+    //SET
+    //Set mailbox capacity
+    public void setMailboxCapacity(int capacity){
+        this.mailboxCapacity = capacity;
+        
+    }
     //Set alternate email address
+    public void setAlternateEmail(String altEmail){
+        this.alternateEmail = altEmail;
+    }
     
     //Change password
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    //GET
+    public int getMailboxCapacity(){
+        return mailboxCapacity;
+    }
+   
+    public String getAlternateEmail(){
+       return alternateEmail;
+   }
+    
+   public String getPassword(){
+       return password;
+   }
+   
+   
+   public String showUserInfo(){
+       return "User name: " + firstName + " " + lastName + 
+               " Email: " + userEmail + 
+               " Mailbox Capacity: " + mailboxCapacity;
+       
+   }
 }
 
 
